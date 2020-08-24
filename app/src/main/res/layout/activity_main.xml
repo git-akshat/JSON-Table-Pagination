@@ -5,20 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:id="@+id/scroll_view">
+    android:id="@+id/scroll_view"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:overScrollMode="always"
+    android:scrollbarSize="10dp"
+    android:orientation="horizontal">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
             <TableLayout
                 android:id="@+id/table"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:stretchColumns="*">
 
                 <TableRow
                     android:layout_width="wrap_content"
@@ -31,7 +33,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:padding="5dp"
                         android:text="City" />
 
                     <ImageSwitcher
@@ -44,7 +45,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:padding="5dp"
                         android:text="Airport" />
 
                     <ImageSwitcher
@@ -58,7 +58,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:padding="5dp"
                         android:text="Code" />
 
                     <ImageSwitcher
@@ -71,7 +70,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:padding="5dp"
                         android:text="Country" />
 
                     <ImageSwitcher
@@ -85,22 +83,12 @@
 
             </TableLayout>
 
-        <TextView
-            android:id="@+id/text_view_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/table"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
         <Button
             android:id="@+id/button_parse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Load"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_result"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            android:layout_gravity="center" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </ScrollView>
