@@ -8,13 +8,13 @@
     android:id="@+id/scroll_view"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     android:overScrollMode="always"
-    android:scrollbarSize="10dp"
-    android:orientation="horizontal">
+    android:scrollbarSize="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="1dp">
 
             <TableLayout
                 android:id="@+id/table"
@@ -23,7 +23,7 @@
                 android:stretchColumns="*">
 
                 <TableRow
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="2dp">
