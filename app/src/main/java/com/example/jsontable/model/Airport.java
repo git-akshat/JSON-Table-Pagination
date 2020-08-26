@@ -1,4 +1,4 @@
-package com.example.jsontable;
+package com.example.jsontable.model;
 
 public class Airport {
     private String city;

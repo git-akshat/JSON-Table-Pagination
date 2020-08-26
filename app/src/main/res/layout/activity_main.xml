@@ -2,13 +2,13 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:id="@+id/scroll_view"
-    android:scrollbarAlwaysDrawVerticalTrack="true"
     android:overScrollMode="always"
-    android:scrollbarSize="10dp">
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarSize="10dp"
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,24 +16,29 @@
         android:orientation="vertical"
         android:padding="1dp">
 
-            <TableLayout
-                android:id="@+id/table"
+        <TableLayout
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="*">
+                android:gravity="center">
 
-                <TableRow
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="2dp">
+                    android:layout_gravity="center"
+                    android:textSize="14sp"
+                    android:text="S.N" />
 
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="City" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="City"/>
 
                     <ImageSwitcher
                         android:id="@+id/city_sort"
@@ -41,11 +46,11 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_arrow_drop_down_black_24dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Airport" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Airport"/>
 
                     <ImageSwitcher
                         android:id="@+id/airport_sort"
@@ -53,12 +58,11 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_arrow_drop_down_black_24dp" />
 
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Code" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Code"/>
 
                     <ImageSwitcher
                         android:id="@+id/code_sort"
@@ -66,11 +70,11 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_arrow_drop_down_black_24dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Country" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Country"/>
 
                     <ImageSwitcher
                         android:id="@+id/country_sort"
@@ -78,17 +82,30 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_arrow_drop_down_black_24dp" />
 
-                </TableRow>
+            </TableRow>
 
-
-            </TableLayout>
+        </TableLayout>
 
         <Button
             android:id="@+id/button_parse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Load"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:text="Load" />
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:scrollbarThumbHorizontal="@color/colorAccent"
+            android:padding="2dp">
+            <LinearLayout
+                android:id="@+id/btnLay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="2dp"
+                android:background="@drawable/cell_shape_grey"/>
+        </HorizontalScrollView>
 
     </LinearLayout>
 </ScrollView>
