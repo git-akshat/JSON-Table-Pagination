@@ -161,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
                 SortUtil.sortByCity(airports);
                 createTable(airports, 0);
                 checkBtnBackGroud(0);
-                showPageNo(0, no_of_pages);
             }
         });
 
@@ -171,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
                 SortUtil.sortByName(airports);
                 createTable(airports, 0);
                 checkBtnBackGroud(0);
-                showPageNo(0, no_of_pages);
             }
         });
 
@@ -181,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
                 SortUtil.sortByCode(airports);
                 createTable(airports, 0);
                 checkBtnBackGroud(0);
-                showPageNo(0, no_of_pages);
             }
         });
 
@@ -191,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
                 SortUtil.sortByCountry(airports);
                 createTable(airports, 0);
                 checkBtnBackGroud(0);
-                showPageNo(0, no_of_pages);
             }
         });
     }
