@@ -1,7 +1,6 @@
 package com.example.jsontable;
 
 import android.app.ProgressDialog;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -12,7 +11,6 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,7 +29,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -153,30 +150,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void sortData(final LinearLayout buttonLayout,final int data_size,final int page_size, final List<Airport> airports) {
-       final TextView tvCity = (TextView) tableRowHeader.getChildAt(1);
-       final TextView tvAirport = (TextView) tableRowHeader.getChildAt(2);
-       final TextView tvCode = (TextView) tableRowHeader.getChildAt(3);
-       final TextView tvCountry = (TextView) tableRowHeader.getChildAt(4);
-       tvCity.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               SortUtil.sortByCity(airports);
-               createTable(airports, 0);
-               checkBtnBackGroud(0);
-               showPageNo(0, no_of_pages);
-           }
-       });
+    private void sortData(final LinearLayout buttonLayout, final int data_size, final int page_size, final List<Airport> airports) {
+        final TextView tvCity = (TextView) tableRowHeader.getChildAt(1);
+        final TextView tvAirport = (TextView) tableRowHeader.getChildAt(2);
+        final TextView tvCode = (TextView) tableRowHeader.getChildAt(3);
+        final TextView tvCountry = (TextView) tableRowHeader.getChildAt(4);
+        tvCity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SortUtil.sortByCity(airports);
+                createTable(airports, 0);
+                checkBtnBackGroud(0);
+                showPageNo(0, no_of_pages);
+            }
+        });
 
-       tvAirport.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               SortUtil.sortByName(airports);
-               createTable(airports, 0);
-               checkBtnBackGroud(0);
-               showPageNo(0, no_of_pages);
-           }
-       });
+        tvAirport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SortUtil.sortByName(airports);
+                createTable(airports, 0);
+                checkBtnBackGroud(0);
+                showPageNo(0, no_of_pages);
+            }
+        });
 
         tvCode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
 
         textViewSN.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 0));
         textViewCity.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 0.3f));
-        textViewAirport.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 1));
+        textViewAirport.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 1.5f));
         textViewCode.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 0));
         textViewCountry.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT, 0.3f));
 
@@ -226,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
         textViewAirport.setMaxLines(3);
         textViewCity.setMaxLines(2);
         textViewCountry.setMaxLines(2);
+        textViewCode.setMaxLines(2);
 
         textViewSN.setPadding(5, 15, 5, 15);
         textViewCity.setPadding(5, 15, 5, 15);
@@ -258,6 +256,12 @@ public class MainActivity extends AppCompatActivity {
             textViewAirport.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) getResources().getDimension(R.dimen.font_size_small));
             textViewCode.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) getResources().getDimension(R.dimen.font_size_small));
             textViewCountry.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) getResources().getDimension(R.dimen.font_size_small));
+
+            textViewCity.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_sort_by_alpha_black, 0);
+            textViewAirport.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_sort_by_alpha_black, 0);
+            textViewCode.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_sort_by_alpha_black, 0);
+            textViewCountry.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_sort_by_alpha_black, 0);
+
             textViewSN.setBackgroundResource(R.drawable.cell_shape_blue);
             textViewCity.setBackgroundResource(R.drawable.cell_shape_blue);
             textViewAirport.setBackgroundResource(R.drawable.cell_shape_blue);
