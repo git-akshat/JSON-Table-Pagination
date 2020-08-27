@@ -91,10 +91,11 @@ public class MainActivity extends AppCompatActivity {
                                 String country = employee.getString("country");
                                 airports.add(new Airport(city, name, code, country));
                             }
+                            createTableHeader();
                             createTable(airports, 0);
                             paginate(buttonLayout, response.length(), PAGE_SIZE, airports);
                             checkBtnBackGroud(0);
-                            sortData();
+                            sortData(buttonLayout, response.length(), PAGE_SIZE, airports);
                             mProgressBar.hide();
                             buttonLoad.setVisibility(View.GONE);
 
@@ -112,10 +113,10 @@ public class MainActivity extends AppCompatActivity {
         mQueue.add(request);
     }
 
-    private void paginate(final LinearLayout buttonLayout, int data_size, int page_size, final List<Airport> airports) {
+    private void paginate(final LinearLayout buttonLayout, final int data_size, final int page_size, final List<Airport> airports) {
         no_of_pages = (data_size + page_size - 1) / page_size;
         buttons = new Button[no_of_pages];
-        Snackbar.make(buttonLayout, "Page 1 of " + no_of_pages, Snackbar.LENGTH_SHORT).setBackgroundTint(getResources().getColor(R.color.transparent)).show();
+        showPageNo(0, no_of_pages);
 
         for (int i = 0; i < no_of_pages; i++) {
             buttons[i] = new Button(this);
@@ -132,11 +133,14 @@ public class MainActivity extends AppCompatActivity {
                     scrollView.fullScroll(ScrollView.FOCUS_UP);
                     createTable(airports, j);
                     checkBtnBackGroud(j);
-                    Snackbar.make(buttonLayout, "Page " + (j + 1) + " of " + no_of_pages, Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(R.color.transparent)).show();
-                    sortData();
+                    showPageNo(j, no_of_pages);
                 }
             });
         }
+    }
+
+    private void showPageNo(int j, int no_of_pages) {
+        Snackbar.make(buttonLayout, "Page " + (j + 1) + " of " + no_of_pages, Snackbar.LENGTH_LONG).setBackgroundTint(getResources().getColor(R.color.transparent)).show();
     }
 
     private void checkBtnBackGroud(int index) {
@@ -149,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void sortData() {
+    private void sortData(final LinearLayout buttonLayout,final int data_size,final int page_size, final List<Airport> airports) {
        final TextView tvCity = (TextView) tableRowHeader.getChildAt(1);
        final TextView tvAirport = (TextView) tableRowHeader.getChildAt(2);
        final TextView tvCode = (TextView) tableRowHeader.getChildAt(3);
@@ -157,36 +161,40 @@ public class MainActivity extends AppCompatActivity {
        tvCity.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               Toast.makeText(MainActivity.this, tvCity.getText(), Toast.LENGTH_LONG).show();
                SortUtil.sortByCity(airports);
                createTable(airports, 0);
+               checkBtnBackGroud(0);
+               showPageNo(0, no_of_pages);
            }
        });
 
        tvAirport.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               Toast.makeText(MainActivity.this, tvAirport.getText(), Toast.LENGTH_LONG).show();
                SortUtil.sortByName(airports);
                createTable(airports, 0);
+               checkBtnBackGroud(0);
+               showPageNo(0, no_of_pages);
            }
        });
 
         tvCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, tvCode.getText(), Toast.LENGTH_LONG).show();
                 SortUtil.sortByCode(airports);
                 createTable(airports, 0);
+                checkBtnBackGroud(0);
+                showPageNo(0, no_of_pages);
             }
         });
 
         tvCountry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, tvCountry.getText(), Toast.LENGTH_LONG).show();
                 SortUtil.sortByCountry(airports);
                 createTable(airports, 0);
+                checkBtnBackGroud(0);
+                showPageNo(0, no_of_pages);
             }
         });
     }
@@ -259,16 +267,18 @@ public class MainActivity extends AppCompatActivity {
         tableLayout.addView(tableRow, index + 1);
     }
 
+    private void createTableHeader() {
+        tableLayout.removeAllViews();
+        createTableRow("S.N", "City", "Airport", "Code", "Country", -1);
+    }
+
     private void createTable(List<Airport> airports, int page) {
         tableLayout.removeAllViews();
-
-        // header row
-        createTableRow("S.N", "City", "Airport", "Code", "Country", -1);
-
+        tableLayout.addView(tableRowHeader);
         // data rows
         for (int i = 0, j = page * 50; j < airports.size() && i < 50; i++, j++) {
             createTableRow(
-                    String.valueOf(i + 1),
+                    String.valueOf(j + 1),
                     airports.get(j).getCity(),
                     airports.get(j).getAirport(),
                     airports.get(j).getCode(),

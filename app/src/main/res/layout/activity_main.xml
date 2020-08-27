@@ -20,71 +20,7 @@
             android:id="@+id/table"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="*">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="14sp"
-                    android:text="S.N" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:text="City"/>
-
-                    <ImageSwitcher
-                        android:id="@+id/city_sort"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_arrow_drop_down_black_24dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:text="Airport"/>
-
-                    <ImageSwitcher
-                        android:id="@+id/airport_sort"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_arrow_drop_down_black_24dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Code"/>
-
-                    <ImageSwitcher
-                        android:id="@+id/code_sort"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_arrow_drop_down_black_24dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Country"/>
-
-                    <ImageSwitcher
-                        android:id="@+id/country_sort"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_arrow_drop_down_black_24dp" />
-
-            </TableRow>
-
-        </TableLayout>
+            android:stretchColumns="*" />
 
         <Button
             android:id="@+id/button_parse"
@@ -96,15 +32,16 @@
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:scrollbarThumbHorizontal="@color/colorAccent"
-            android:padding="2dp">
+            android:padding="2dp"
+            android:scrollbarThumbHorizontal="@color/colorAccent">
+
             <LinearLayout
                 android:id="@+id/btnLay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape_grey"
                 android:orientation="horizontal"
-                android:padding="2dp"
-                android:background="@drawable/cell_shape_grey"/>
+                android:padding="2dp" />
         </HorizontalScrollView>
 
     </LinearLayout>
