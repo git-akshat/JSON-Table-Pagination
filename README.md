@@ -8,5 +8,4 @@ Android app to display parsing of JSON data from REST API and display it in Tabl
 - Sort in Ascending or Descending order by clicking on sort icon in table header.
 
 ### Screenshots: 
-
-![table.png](screenshots/ss-2.png)
+![gif](screenshots/pagination.gif)
