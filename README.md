@@ -9,4 +9,9 @@ Android app to display parsing of JSON data from REST API and display it in Tabl
 
 ### Screenshots: 
 
-![table.png](screenshots/ss-2.png)
+![header.jpg](screenshots/header.jpg)
+![footer.png](screenshots/footer.png)
+
+<br>
+
+![gif](screenshots/pagination.gif)
